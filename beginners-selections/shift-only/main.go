@@ -5,8 +5,7 @@ import (
 )
 
 func main() {
-	var N int
-	var count int
+	var N, count int
 	fmt.Scanf("%d", &N)
 	array := make([]int, N)
 	for i := 0; i < N; i++ {
@@ -15,11 +14,7 @@ func main() {
 	data := make(map[int]bool)
 	data = mapEvenOdd(data, array)
 	for isAllEven(data) {
-		d := make(map[int]bool)
-		arr := divide(array)
-		fmt.Println(arr)
-		d = mapEvenOdd(d, arr)
-		data = d
+		data = mapEvenOdd(data, divide(array))
 		count = count + 1
 	}
 	fmt.Println(count)
@@ -44,6 +39,7 @@ func isAllEven(data map[int]bool) bool {
 	}
 	return true
 }
+
 func divide(array []int) []int {
 	for i := range array {
 		array[i] = array[i] / 2
